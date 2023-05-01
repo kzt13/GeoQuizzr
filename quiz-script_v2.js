@@ -1,15 +1,16 @@
 const directoryPath = './img/';
-const imagePaths = [];
+let imagePaths = [];
 
 fetch('br.json')
   .then(response => response.json())
   .then(data => {
-    const imagePaths = data.map(item => {
+    imagePaths = data.map(item => {
       return {
         path: item.path,
         answer: item.answer
       };
-    })
+    });
+  })
   .then(() => {
     // Select a random image and area code
     const randomIndex = Math.floor(Math.random() * imagePaths.length);
@@ -40,6 +41,5 @@ fetch('br.json')
         checkAnswer();
       }
     });
-  })
   })
   .catch(error => console.error(error));
