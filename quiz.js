@@ -24,7 +24,7 @@ fetch(directoryPath)
     const randomAnswer = imagePaths[randomIndex].answer;
 
     // Set question image source
-    const questionImage = document.getElementById('question-image');
+    const questionImage = document.getElementById('quiz-image');
     questionImage.src = randomImagePath;
 
     // Check user answer and display feedback
