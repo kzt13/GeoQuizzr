@@ -25,7 +25,6 @@ fetch('br.json')
     function checkAnswer() {
       const userAnswer = document.getElementById('answer-input').value;
       const feedbackContainer = document.getElementById('feedback-container');
-      alert(userAnswer);
 
       if (userAnswer === randomAnswer.toString()) {
         feedbackContainer.innerHTML = 'Correct!';
