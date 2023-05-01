@@ -32,6 +32,8 @@ fetch('br.json')
     const questionImage = document.getElementById('quiz-image');
     const feedbackContainer = document.getElementById('feedback-container');
     const answerInput = document.getElementById('answer-input');
+    const submitButton = document.getElementById('quiz-submit-button');
+    submitButton.addEventListener('click', checkAnswer);
 
     function displayQuestion() {
       questionImage.src = questions[questionIndex].imagePath;
