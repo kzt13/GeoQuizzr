@@ -1,10 +1,5 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
+/* container -> quiz-container に修正 */
+.quiz-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -15,17 +10,20 @@ h1 {
   text-align: center;
 }
 
-.quiz-image {
+/* .quiz-image -> #quiz-image に修正 */
+#quiz-image {
   width: 500px;
   height: auto;
+  max-width: 100%;
 }
 
-.quiz-question {
+#quiz-question {
   font-size: 24px;
   margin-top: 30px;
 }
 
-.quiz-input {
+/* .quiz-input -> #quiz-answer に修正 */
+#quiz-answer {
   font-size: 24px;
   margin-top: 10px;
   padding: 5px;
@@ -35,7 +33,8 @@ h1 {
   max-width: 400px;
 }
 
-.quiz-submit {
+/* .quiz-submit -> #quiz-submit-button に修正 */
+#quiz-submit-button {
   font-size: 24px;
   margin-top: 10px;
   padding: 10px 20px;
@@ -47,7 +46,7 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.quiz-submit:hover {
+#quiz-submit-button:hover {
   background-color: #3e8e41;
 }
 
