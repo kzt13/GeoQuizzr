@@ -15,6 +15,7 @@ h1 {
   width: 500px;
   height: auto;
   max-width: 100%;
+  visibility: hidden;
 }
 
 #quiz-question {
