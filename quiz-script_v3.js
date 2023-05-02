@@ -24,7 +24,7 @@ fetch('br.json')
 
 function displayNextQuestion() {
   submitButton.removeEventListener('click', checkAnswer);
-  answerInput.removeEventListener('keyup', checkAnswerOnEnter);
+  answerInput.removeEventListener('keyup', function(event) { if (event.key === 'Enter') { checkAnswer(); } });
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
