@@ -5,6 +5,7 @@ let correctCount = 0;
 let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
+let keyupEventHandler = function(event) { if (event.key === 'Enter') { checkAnswer(); } };
 
 fetch('br.json')
   .then(response => response.json())
@@ -28,6 +29,9 @@ function displayNextQuestion() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = maxQuestions;
+  
+  submitButton.removeEventListener('click', checkAnswer);
+  answerInput.removeEventListener('keyup', keyupEventHandler);
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
@@ -42,10 +46,9 @@ function displayNextQuestion() {
 
   // Set question image source
   const questionImage = document.getElementById('quiz-image');
+  questionImage.onload = null;
+  questionImage.style.visibility = 'hidden';
   questionImage.src = randomImagePath;
-  questionImage.onload = function() {
-    questionImage.style.visibility = 'visible';
-  };
 
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
