@@ -36,6 +36,7 @@ function displayNextQuestion() {
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
     alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
+    resetScore();
     return;
   }
 
@@ -85,4 +86,13 @@ function displayNextQuestion() {
 
   submitButton.addEventListener('click', checkAnswer);
   answerInput.addEventListener('keyup', keyupEventHandler);
+}
+
+function resetScore() {
+  questionCount = 0;
+  correctCount = 0;
+  const currentScoreElement = document.getElementById('current-score');
+  const totalQuestionsElement = document.getElementById('total-questions');
+  currentScoreElement.innerHTML = correctCount;
+  totalQuestionsElement.innerHTML = maxQuestions;
 }
