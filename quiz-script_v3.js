@@ -49,6 +49,11 @@ function displayNextQuestion() {
   questionImage.onload = null;
   questionImage.style.visibility = 'hidden';
   questionImage.src = randomImagePath;
+  let isImageLoaded = false;
+  questionImage.onload = function() {
+    isImageLoaded = true;
+    questionImage.style.visibility = 'visible';
+  };
 
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
@@ -57,6 +62,10 @@ function displayNextQuestion() {
 
   // Check user answer and display feedback
   function checkAnswer() {
+  // Check if image is loaded
+    if (!isImageLoaded) {
+      return;
+    }
     const userAnswer = answerInput.value;
     if (userAnswer === randomAnswer.toString()) {
       feedbackContainer.innerHTML = 'Correct!';
