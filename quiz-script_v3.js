@@ -2,6 +2,7 @@ const directoryPath = './img/';
 let imagePaths = [];
 let questionCount = 0;
 let correctCount = 0;
+let maxQuestions = 10;
 
 fetch('br.json')
   .then(response => response.json())
@@ -12,6 +13,7 @@ fetch('br.json')
         answer: item.answer
       };
     });
+    maxQuestions = Math.min(maxQuestions, imagePaths.length);
   })
   .then(() => {
     displayNextQuestion();
@@ -20,8 +22,8 @@ fetch('br.json')
 
 function displayNextQuestion() {
   // Check if all questions have been answered
-  if (questionCount === Math.min(10, imagePaths.length)) {
-    alert(`You answered ${correctCount} out of ${Math.min(10, imagePaths.length)} questions correctly.`);
+  if (questionCount === maxQuestions) {
+    alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
     return;
   }
 
@@ -52,13 +54,15 @@ function displayNextQuestion() {
       feedbackContainer.style.color = 'red';
     }
     questionCount++;
-    setTimeout(displayNextQuestion, 1000);
+    setTimeout(() => {
+      displayNextQuestion();
+    }, 1000);
   }
 
   const submitButton = document.getElementById('quiz-submit-button');
   submitButton.addEventListener('click', checkAnswer);
 
-  answerInput = document.getElementById('answer-input');
+  const answerInput = document.getElementById('answer-input');
   answerInput.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
       checkAnswer();
