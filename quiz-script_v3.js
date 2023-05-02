@@ -82,8 +82,10 @@ function displayNextQuestion() {
 
     questionCount++;
 
-    submitButton.addEventListener('click', checkAnswer);
-    answerInput.addEventListener('keyup', keyupEventHandler);
+    submitButton.removeEventListener('click', checkAnswer);
+    answerInput.removeEventListener('keyup', keyupEventHandler);
+
+    displayNextQuestion();
   }
 
   submitButton.addEventListener('click', checkAnswer);
