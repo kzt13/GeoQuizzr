@@ -1,46 +1,18 @@
-const directoryPath = './img/';
-let imagePaths = [];
-let questionCount = 0;
-let correctCount = 0;
-let maxQuestions = 10;
-const submitButton = document.getElementById('quiz-submit-button');
-const answerInput = document.getElementById('answer-input');
-let keyupEventHandler = function(event) { if (event.key === 'Enter') { checkAnswer(); } };
-
-fetch('br.json')
-  .then(response => response.json())
-  .then(data => {
-    imagePaths = data.map(item => {
-      return {
-        path: item.path,
-        answer: item.answer
-      };
-    });
-    maxQuestions = Math.min(maxQuestions, imagePaths.length);
-  })
-  .then(() => {
-    displayNextQuestion();
-  })
-  .catch(error => console.error(error));
-
 function displayNextQuestion() {
   // Update score
   const currentScoreElement = document.getElementById('current-score');
-  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount}`;
+  const totalQuestionsElement = document.getElementById('total-questions');
+  currentScoreElement.innerHTML = correctCount;
+  totalQuestionsElement.innerHTML = maxQuestions;
+  
+  submitButton.removeEventListener('click', checkAnswer);
+  answerInput.removeEventListener('keyup', keyupEventHandler);
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
     alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
-    questionCount = 0;
-    correctCount = 0;
     return;
   }
-
-  const totalQuestionsElement = document.getElementById('total-questions');
-  totalQuestionsElement.innerHTML = maxQuestions;
-
-  submitButton.removeEventListener('click', checkAnswer);
-  answerInput.removeEventListener('keyup', keyupEventHandler);
 
   // Select a random image and area code
   const randomIndex = Math.floor(Math.random() * imagePaths.length);
@@ -69,23 +41,21 @@ function displayNextQuestion() {
     if (!isImageLoaded) {
       return;
     }
-
-    const userAnswer = answerInput.value.trim();
+    const userAnswer = answerInput.value;
     if (userAnswer === randomAnswer.toString()) {
       feedbackContainer.innerHTML = 'Correct!';
       feedbackContainer.style.color = 'green';
       correctCount++;
     } else {
-      feedbackContainer.innerHTML = `Incorrect. The correct area code was ${randomAnswer}.`;
+      feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
       feedbackContainer.style.color = 'red';
     }
-
-    questionCount++;
-
     submitButton.removeEventListener('click', checkAnswer);
     answerInput.removeEventListener('keyup', keyupEventHandler);
-
-    displayNextQuestion();
+    setTimeout(() => {
+      questionCount++;
+      displayNextQuestion();
+    }, 1000);
   }
 
   submitButton.addEventListener('click', checkAnswer);
