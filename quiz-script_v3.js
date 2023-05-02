@@ -27,7 +27,7 @@ function displayNextQuestion() {
   // Update score
   const currentScoreElement = document.getElementById('current-score');
   const totalQuestionsElement = document.getElementById('total-questions');
-  currentScoreElement.innerHTML = correctCount;
+  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount}`;
   totalQuestionsElement.innerHTML = maxQuestions;
   
   submitButton.removeEventListener('click', checkAnswer);
@@ -75,8 +75,6 @@ function displayNextQuestion() {
       feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
       feedbackContainer.style.color = 'red';
     }
-    submitButton.removeEventListener('click', checkAnswer);
-    answerInput.removeEventListener('keyup', keyupEventHandler);
     setTimeout(() => {
       questionCount++;
       displayNextQuestion();
@@ -84,5 +82,9 @@ function displayNextQuestion() {
   }
 
   submitButton.addEventListener('click', checkAnswer);
-  answerInput.addEventListener('keyup', keyupEventHandler);
+  answerInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      checkAnswer();
+    }
+  });
 }
