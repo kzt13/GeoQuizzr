@@ -62,7 +62,7 @@ function displayNextQuestion() {
   const submitButton = document.getElementById('quiz-submit-button');
   submitButton.addEventListener('click', checkAnswer);
 
-  let answerInput = document.getElementById('answer-input');
+  const answerInput = document.getElementById('answer-input');
   answerInput.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
       checkAnswer();
