@@ -62,7 +62,7 @@ function displayNextQuestion() {
 
   // Check user answer and display feedback
   function checkAnswer() {
-  // Check if image is loaded
+    // Check if image is loaded
     if (!isImageLoaded) {
       return;
     }
@@ -75,6 +75,8 @@ function displayNextQuestion() {
       feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
       feedbackContainer.style.color = 'red';
     }
+    submitButton.removeEventListener('click', checkAnswer);
+    answerInput.removeEventListener('keyup', keyupEventHandler);
     setTimeout(() => {
       questionCount++;
       displayNextQuestion();
@@ -82,9 +84,5 @@ function displayNextQuestion() {
   }
 
   submitButton.addEventListener('click', checkAnswer);
-  answerInput.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-      checkAnswer();
-    }
-  });
+  answerInput.addEventListener('keyup', keyupEventHandler);
 }
