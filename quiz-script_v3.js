@@ -28,7 +28,7 @@ function displayNextQuestion() {
   const currentScoreElement = document.getElementById('current-score');
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
-  totalQuestionsElement.innerHTML = maxQuestions;
+  totalQuestionsElement.innerHTML = questionCount;
   
   submitButton.removeEventListener('click', checkAnswer);
   answerInput.removeEventListener('keyup', keyupEventHandler);
@@ -94,5 +94,5 @@ function resetScore() {
   const currentScoreElement = document.getElementById('current-score');
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
-  totalQuestionsElement.innerHTML = maxQuestions;
+  totalQuestionsElement.innerHTML = questionCount;
 }
