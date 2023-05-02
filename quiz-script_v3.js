@@ -3,6 +3,8 @@ let imagePaths = [];
 let questionCount = 0;
 let correctCount = 0;
 let maxQuestions = 10;
+const submitButton = document.getElementById('quiz-submit-button');
+const answerInput = document.getElementById('answer-input');
 
 fetch('br.json')
   .then(response => response.json())
@@ -22,7 +24,7 @@ fetch('br.json')
 
 function displayNextQuestion() {
   submitButton.removeEventListener('click', checkAnswer);
-answerInput.removeEventListener('keyup', checkAnswerOnEnter);
+  answerInput.removeEventListener('keyup', checkAnswerOnEnter);
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
@@ -42,7 +44,6 @@ answerInput.removeEventListener('keyup', checkAnswerOnEnter);
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
   feedbackContainer.innerHTML = '';
-  let answerInput = document.getElementById('answer-input');
   answerInput.value = '';
 
   // Check user answer and display feedback
@@ -62,7 +63,6 @@ answerInput.removeEventListener('keyup', checkAnswerOnEnter);
     }, 1000);
   }
 
-  const submitButton = document.getElementById('quiz-submit-button');
   submitButton.addEventListener('click', checkAnswer);
 
   answerInput.addEventListener('keyup', function(event) {
