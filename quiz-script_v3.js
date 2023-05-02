@@ -1,3 +1,28 @@
+const directoryPath = './img/';
+let imagePaths = [];
+let questionCount = 0;
+let correctCount = 0;
+let maxQuestions = 10;
+const submitButton = document.getElementById('quiz-submit-button');
+const answerInput = document.getElementById('answer-input');
+let keyupEventHandler = function(event) { if (event.key === 'Enter') { checkAnswer(); } };
+
+fetch('br.json')
+  .then(response => response.json())
+  .then(data => {
+    imagePaths = data.map(item => {
+      return {
+        path: item.path,
+        answer: item.answer
+      };
+    });
+    maxQuestions = Math.min(maxQuestions, imagePaths.length);
+  })
+  .then(() => {
+    displayNextQuestion();
+  })
+  .catch(error => console.error(error));
+
 function displayNextQuestion() {
   // Update score
   const currentScoreElement = document.getElementById('current-score');
