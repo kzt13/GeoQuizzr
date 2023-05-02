@@ -5,7 +5,6 @@ let correctCount = 0;
 let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
-let keyupEventHandler = function(event) { if (event.key === 'Enter') { checkAnswer(); } };
 
 fetch('br.json')
   .then(response => response.json())
@@ -29,9 +28,6 @@ function displayNextQuestion() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = maxQuestions;
-  
-  submitButton.removeEventListener('click', checkAnswer);
-  answerInput.removeEventListener('keyup', keyupEventHandler);
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
@@ -48,7 +44,7 @@ function displayNextQuestion() {
   const questionImage = document.getElementById('quiz-image');
   questionImage.src = randomImagePath;
   questionImage.onload = function() {
-  questionImage.style.visibility = 'visible';
+    questionImage.style.visibility = 'visible';
   };
 
   // Reset feedback container and answer input
@@ -67,14 +63,13 @@ function displayNextQuestion() {
       feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
       feedbackContainer.style.color = 'red';
     }
-    questionCount++;
     setTimeout(() => {
+      questionCount++;
       displayNextQuestion();
     }, 1000);
   }
 
   submitButton.addEventListener('click', checkAnswer);
-
   answerInput.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
       checkAnswer();
