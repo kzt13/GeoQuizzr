@@ -40,6 +40,9 @@ function displayNextQuestion() {
   // Set question image source
   const questionImage = document.getElementById('quiz-image');
   questionImage.src = randomImagePath;
+  questionImage.onload = function() {
+  questionImage.style.visibility = 'visible';
+  };
 
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
