@@ -26,10 +26,10 @@ fetch('br.json')
 function displayNextQuestion() {
   // Update score
   const currentScoreElement = document.getElementById('current-score');
+  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount + 1}`;
   const totalQuestionsElement = document.getElementById('total-questions');
-  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount}`;
   totalQuestionsElement.innerHTML = maxQuestions;
-  
+
   submitButton.removeEventListener('click', checkAnswer);
   answerInput.removeEventListener('keyup', keyupEventHandler);
 
@@ -67,19 +67,20 @@ function displayNextQuestion() {
       return;
     }
     const userAnswer = answerInput.value;
-    if (userAnswer === randomAnswer.toString()) {
-      feedbackContainer.innerHTML = 'Correct!';
-      feedbackContainer.style.color = 'green';
-      correctCount++;
-    } else {
-      feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
-      feedbackContainer.style.color = 'red';
-    }
-    setTimeout(() => {
-      questionCount++;
-      displayNextQuestion();
-    }, 1000);
+  if (userAnswer === randomAnswer.toString()) {
+    feedbackContainer.innerHTML = 'Correct!';
+    feedbackContainer.style.color = 'green';
+    correctCount++;
+  } else {
+    feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
+    feedbackContainer.style.color = 'red';
   }
+
+  questionCount++;
+  setTimeout(() => {
+    displayNextQuestion();
+  }, 1000);
+
 
   submitButton.addEventListener('click', checkAnswer);
   answerInput.addEventListener('keyup', function(event) {
