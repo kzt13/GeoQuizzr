@@ -21,6 +21,9 @@ fetch('br.json')
   .catch(error => console.error(error));
 
 function displayNextQuestion() {
+  submitButton.removeEventListener('click', checkAnswer);
+answerInput.removeEventListener('keyup', checkAnswerOnEnter);
+
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
     alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
