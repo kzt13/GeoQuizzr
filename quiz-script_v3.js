@@ -39,7 +39,7 @@ function displayNextQuestion() {
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
   feedbackContainer.innerHTML = '';
-  const answerInput = document.getElementById('answer-input');
+  let answerInput = document.getElementById('answer-input');
   answerInput.value = '';
 
   // Check user answer and display feedback
@@ -62,7 +62,6 @@ function displayNextQuestion() {
   const submitButton = document.getElementById('quiz-submit-button');
   submitButton.addEventListener('click', checkAnswer);
 
-  const answerInput = document.getElementById('answer-input');
   answerInput.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
       checkAnswer();
