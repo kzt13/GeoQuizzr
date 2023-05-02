@@ -23,6 +23,12 @@ fetch('br.json')
   .catch(error => console.error(error));
 
 function displayNextQuestion() {
+  // Update score
+  const currentScoreElement = document.getElementById('current-score');
+  const totalQuestionsElement = document.getElementById('total-questions');
+  currentScoreElement.innerHTML = correctCount;
+  totalQuestionsElement.innerHTML = maxQuestions;
+  
   submitButton.removeEventListener('click', checkAnswer);
   answerInput.removeEventListener('keyup', function(event) { if (event.key === 'Enter') { checkAnswer(); } });
 
