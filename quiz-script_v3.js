@@ -5,6 +5,7 @@ let correctCount = 0;
 let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
+let keyupEventHandler = function(event) { if (event.key === 'Enter') { checkAnswer(); } };
 
 fetch('br.json')
   .then(response => response.json())
@@ -30,7 +31,7 @@ function displayNextQuestion() {
   totalQuestionsElement.innerHTML = maxQuestions;
   
   submitButton.removeEventListener('click', checkAnswer);
-  answerInput.removeEventListener('keyup', function(event) { if (event.key === 'Enter') { checkAnswer(); } });
+  answerInput.removeEventListener('keyup', keyupEventHandler);
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
