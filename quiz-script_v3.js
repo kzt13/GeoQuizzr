@@ -26,18 +26,21 @@ fetch('br.json')
 function displayNextQuestion() {
   // Update score
   const currentScoreElement = document.getElementById('current-score');
-  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount + 1}`;
+  currentScoreElement.innerHTML = `Current score: ${correctCount}/${questionCount}`;
+
+  // Check if all questions have been answered
+  if (questionCount === maxQuestions) {
+    alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
+    questionCount = 0;
+    correctCount = 0;
+    return;
+  }
+
   const totalQuestionsElement = document.getElementById('total-questions');
   totalQuestionsElement.innerHTML = maxQuestions;
 
   submitButton.removeEventListener('click', checkAnswer);
   answerInput.removeEventListener('keyup', keyupEventHandler);
-
-  // Check if all questions have been answered
-  if (questionCount === maxQuestions) {
-    alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
-    return;
-  }
 
   // Select a random image and area code
   const randomIndex = Math.floor(Math.random() * imagePaths.length);
@@ -66,26 +69,18 @@ function displayNextQuestion() {
     if (!isImageLoaded) {
       return;
     }
-    const userAnswer = answerInput.value;
-  if (userAnswer === randomAnswer.toString()) {
-    feedbackContainer.innerHTML = 'Correct!';
-    feedbackContainer.style.color = 'green';
-    correctCount++;
-  } else {
-    feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
-    feedbackContainer.style.color = 'red';
-  }
 
-  questionCount++;
-  setTimeout(() => {
-    displayNextQuestion();
-  }, 1000);
-
-
-  submitButton.addEventListener('click', checkAnswer);
-  answerInput.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-      checkAnswer();
+    const userAnswer = answerInput.value.trim();
+    if (userAnswer === randomAnswer.toString()) {
+      feedbackContainer.innerHTML = 'Correct!';
+      feedbackContainer.style.color = 'green';
+      correctCount++;
+    } else {
+      feedbackContainer.innerHTML = `Incorrect. The correct area code was ${randomAnswer}.`;
+      feedbackContainer.style.color = 'red';
     }
-  });
-}
+
+    questionCount++;
+
+    submitButton.removeEventListener('click', checkAnswer);
+    answerInput.removeEventListener('keyup', keyupEventHandler);
