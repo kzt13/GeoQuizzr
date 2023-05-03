@@ -6,13 +6,6 @@ let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
 
-// keyupEventHandlerをグローバルスコープで定義
-function keyupEventHandler(event) {
-  if (event.key === 'Enter') {
-    checkAnswer();
-  }
-}
-
 fetch('br.json')
   .then(response => response.json())
   .then(data => {
@@ -101,4 +94,11 @@ function resetScore() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = questionCount;
+}
+
+// keyupEventHandlerをグローバルスコープで定義
+function keyupEventHandler(event) {
+  if (event.key === 'Enter') {
+    checkAnswer();
+  }
 }
