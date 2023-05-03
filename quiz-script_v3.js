@@ -83,9 +83,18 @@ function displayNextQuestion() {
     }, 1000);
   }
 
+  // Add event listeners to submit button and answer input
   submitButton.addEventListener('click', checkAnswer);
   answerInput.addEventListener('keyup', keyupEventHandler);
+
+  // Define keyupEventHandler function in displayNextQuestion
+  function keyupEventHandler(event) {
+    if (event.key === 'Enter') {
+      checkAnswer();
+    }
+  }
 }
+
 
 function resetScore() {
   questionCount = 0;
@@ -94,11 +103,4 @@ function resetScore() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = questionCount;
-}
-
-// keyupEventHandlerをグローバルスコープで定義
-function keyupEventHandler(event) {
-  if (event.key === 'Enter') {
-    checkAnswer();
-  }
 }
