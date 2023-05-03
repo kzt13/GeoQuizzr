@@ -64,4 +64,5 @@ h1 {
 .quiz-question-container {
   display: inline-block;
   vertical-align: top;
+  white-space: nowrap;
 }
