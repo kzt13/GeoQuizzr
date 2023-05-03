@@ -61,6 +61,28 @@ function displayNextQuestion() {
   answerInput.value = '';
 
   // Check user answer and display feedback
+  function checkAnswer() {
+    // Check if image is loaded
+    if (!isImageLoaded) {
+      return;
+    }
+    const userAnswer = answerInput.value;
+    if (userAnswer === randomAnswer.toString()) {
+      feedbackContainer.innerHTML = 'Correct!';
+      feedbackContainer.style.color = 'green';
+      correctCount++;
+    } else {
+      feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
+      feedbackContainer.style.color = 'red';
+    }
+    submitButton.removeEventListener('click', checkAnswer);
+    answerInput.removeEventListener('keyup', keyupEventHandler);
+    setTimeout(() => {
+      questionCount++;
+      displayNextQuestion();
+    }, 1000);
+  }
+
   submitButton.addEventListener('click', checkAnswer);
   answerInput.addEventListener('keyup', keyupEventHandler);
 }
@@ -72,29 +94,6 @@ function resetScore() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = questionCount;
-}
-
-function checkAnswer() {
-  // Check if image is loaded
-  const questionImage = document.getElementById('quiz-image');
-  if (questionImage.style.visibility !== 'visible') {
-    return;
-  }
-  
-  const userAnswer = answerInput.value;
-  if (userAnswer === randomAnswer.toString()) {
-    feedbackContainer.innerHTML = 'Correct!';
-    feedbackContainer.style.color = 'green';
-    correctCount++;
-  } else {
-    feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
-    feedbackContainer.style.color = 'red';
-  }
-  
-  questionCount++;
-  setTimeout(() => {
-    displayNextQuestion();
-  }, 1000);
 }
 
 // keyupEventHandlerをグローバルスコープで定義
