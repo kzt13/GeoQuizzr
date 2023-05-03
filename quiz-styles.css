@@ -58,3 +58,10 @@ h1 {
   border-radius: 5px;
   text-align: center;
 }
+
+/* 画像の右に入力欄などを表示 */
+.quiz-image-container,
+.quiz-question-container {
+  display: inline-block;
+  vertical-align: top;
+}
