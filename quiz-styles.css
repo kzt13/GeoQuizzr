@@ -69,14 +69,16 @@ h1 {
 
 #quiz-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 #quiz-image-container {
-  flex: 1;
+  flex-grow: 1;
 }
 
 #quiz-question-container {
-  flex: 1;
+  flex-grow: 1;
+  overflow-wrap: break-word;
 }
