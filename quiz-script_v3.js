@@ -65,17 +65,23 @@ function displayNextQuestion() {
   answerInput.addEventListener('keyup', keyupEventHandler);
 }
 
-// checkAnswerをdisplayNextQuestionの外に移動
+function resetScore() {
+  questionCount = 0;
+  correctCount = 0;
+  const currentScoreElement = document.getElementById('current-score');
+  const totalQuestionsElement = document.getElementById('total-questions');
+  currentScoreElement.innerHTML = correctCount;
+  totalQuestionsElement.innerHTML = questionCount;
+}
+
 function checkAnswer() {
   // Check if image is loaded
   const questionImage = document.getElementById('quiz-image');
-  if (questionImage.style.visibility === 'hidden') {
+  if (questionImage.style.visibility !== 'visible') {
     return;
   }
-
+  
   const userAnswer = answerInput.value;
-  const feedbackContainer = document.getElementById('feedback-container');
-
   if (userAnswer === randomAnswer.toString()) {
     feedbackContainer.innerHTML = 'Correct!';
     feedbackContainer.style.color = 'green';
@@ -84,23 +90,11 @@ function checkAnswer() {
     feedbackContainer.innerHTML = 'Incorrect. The correct area code was ' + randomAnswer;
     feedbackContainer.style.color = 'red';
   }
-
-  submitButton.removeEventListener('click', checkAnswer);
-  answerInput.removeEventListener('keyup', keyupEventHandler);
-
+  
+  questionCount++;
   setTimeout(() => {
-    questionCount++;
     displayNextQuestion();
   }, 1000);
-}
-
-function resetScore() {
-  questionCount = 0;
-  correctCount = 0;
-  const currentScoreElement = document.getElementById('current-score');
-  const totalQuestionsElement = document.getElementById('total-questions');
-  currentScoreElement.innerHTML = correctCount;
-  totalQuestionsElement.innerHTML = questionCount;
 }
 
 // keyupEventHandlerをグローバルスコープで定義
