@@ -66,3 +66,17 @@ h1 {
   vertical-align: top;
   white-space: nowrap;
 }
+
+#quiz-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#quiz-image-container {
+  flex: 1;
+}
+
+#quiz-question-container {
+  flex: 1;
+}
