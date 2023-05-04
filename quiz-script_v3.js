@@ -68,7 +68,7 @@ function displayNextQuestion() {
 
   function returnToCountry() {
     popupContainer.style.display = 'none';
-    window.location.href = 'country-selection.html';
+    window.location.href = 'index.html';
   }
 
   // Select a random image and area code that has not been selected yet
