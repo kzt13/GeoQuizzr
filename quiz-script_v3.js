@@ -5,6 +5,7 @@ let correctCount = 0;
 let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
+const selectedIndexes = [];
 
 fetch('br.json')
   .then(response => response.json())
@@ -39,8 +40,13 @@ function displayNextQuestion() {
     return;
   }
 
-  // Select a random image and area code
-  const randomIndex = Math.floor(Math.random() * imagePaths.length);
+  // Select a random image and area code that has not been selected yet
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * imagePaths.length);
+  } while (selectedIndexes.includes(randomIndex));
+  selectedIndexes.push(randomIndex);
+  
   const randomImagePath = imagePaths[randomIndex].path;
   const randomAnswer = imagePaths[randomIndex].answer;
 
