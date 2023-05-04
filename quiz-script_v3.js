@@ -6,8 +6,9 @@ let maxQuestions = 10;
 const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
 const selectedIndexes = [];
+const country = getCountryFromUrl(); // get selected country from URL parameter
 
-fetch('br.json')
+fetch(`${country}.json`) // load JSON file based on selected country
   .then(response => response.json())
   .then(data => {
     imagePaths = data.map(item => {
@@ -22,6 +23,16 @@ fetch('br.json')
     displayNextQuestion();
   })
   .catch(error => console.error(error));
+
+function getCountryFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const country = urlParams.get('country');
+  if (country) {
+    return country.toLowerCase(); // convert to lowercase to match JSON file names
+  } else {
+    return 'br'; // default to Brazil if country parameter is not specified
+  }
+}
 
 function displayNextQuestion() {
   // Update score
