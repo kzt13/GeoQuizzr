@@ -7,6 +7,10 @@ const submitButton = document.getElementById('quiz-submit-button');
 const answerInput = document.getElementById('answer-input');
 const selectedIndexes = [];
 const country = getCountryFromUrl(); // get selected country from URL parameter
+const popupContainer = document.getElementById('popup-container');
+const resultText = document.getElementById('result-text');
+const playAgainButton = document.getElementById('play-again-button');
+const returnToCountryButton = document.getElementById('return-to-country-button');
 
 fetch(`${country}.json`) // load JSON file based on selected country
   .then(response => response.json())
@@ -44,35 +48,27 @@ function displayNextQuestion() {
   submitButton.removeEventListener('click', checkAnswer);
   answerInput.removeEventListener('keyup', keyupEventHandler);
 
+
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
-    const resultMessage = `You answered ${correctCount} out of ${maxQuestions} questions correctly.`;
-    const popup = document.createElement('div');
-    popup.classList.add('popup');
-  
-    const message = document.createElement('p');
-    message.textContent = resultMessage;
-    popup.appendChild(message);
-  
-    const playAgainButton = document.createElement('button');
-    playAgainButton.textContent = 'Play Again';
-    playAgainButton.addEventListener('click', () => {
-      popup.remove();
-      resetScore();
-      displayNextQuestion();
-    });
-    popup.appendChild(playAgainButton);
-  
-    const goToCountrySelectionButton = document.createElement('button');
-    goToCountrySelectionButton.textContent = 'Go to Country Selection';
-    goToCountrySelectionButton.addEventListener('click', () => {
-      popup.remove();
-      location.href = 'index.html';
-    });
-    popup.appendChild(goToCountrySelectionButton);
-  
-    document.body.appendChild(popup);
-    return;
+    let message = `You answered ${correctCount} out of ${maxQuestions} questions correctly.`;
+    resultText.innerHTML = message;
+    popupContainer.style.display = 'block';
+
+    playAgainButton.addEventListener('click', playAgain);
+    returnToCountryButton.addEventListener('click', returnToCountry);
+  }
+
+  function playAgain() {
+    popupContainer.style.display = 'none';
+    resetScore();
+    selectedIndexes.length = 0;
+    displayNextQuestion();
+  }
+
+  function returnToCountry() {
+    popupContainer.style.display = 'none';
+    window.location.href = 'country-selection.html';
   }
 
   // Select a random image and area code that has not been selected yet
