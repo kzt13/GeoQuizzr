@@ -12,7 +12,7 @@ const resultText = document.getElementById('result-text');
 const playAgainButton = document.getElementById('play-again-button');
 const returnToCountryButton = document.getElementById('return-to-country-button');
 
-fetch(`${country}.json`) // load JSON file based on selected country
+fetch(`./json/${country}.json`) // load JSON file based on selected country
   .then(response => response.json())
   .then(data => {
     imagePaths = data.map(item => {
