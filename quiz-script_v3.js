@@ -62,6 +62,7 @@ function displayNextQuestion() {
   function playAgain() {
     popupContainer.style.display = 'none';
     resetScore();
+    selectedIndexes = [];
     selectedIndexes.length = 0;
     displayNextQuestion();
   }
