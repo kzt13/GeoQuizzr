@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Country Select Page</title>
+    <link rel="stylesheet" type="text/css" href="select-styles.css">
+  </head>
+  <body>
+    <h1>Select a country</h1>
+    <ul id="country-list">
+      <li><a href="#" data-country="br">Brazil</a></li>
+      <li><a href="#" data-country="cz">Czech Republic</a></li>
+      <li><a href="#" data-country="id">Indonesia</a></li>
+      <li><a href="#" data-country="jp">Japan</a></li>
+      <li><a href="#" data-country="sk">Slovakia</a></li>
+    </ul>
+
+    <script>
+      const countryList = document.getElementById('country-list');
+      const countries = [
+        { code: 'br', name: 'Brazil' },
+        { code: 'cz', name: 'Czech Republic' },
+        { code: 'id', name: 'Indonesia' },
+        { code: 'jp', name: 'Japan' },
+        { code: 'sk', name: 'Slovakia' },
+      ];
+
+      countryList.addEventListener('click', (event) => {
+        event.preventDefault();
+        const selectedCountry = event.target.dataset.country;
+        const matchedCountry = countries.find(country => country.code === selectedCountry);
+        if (matchedCountry) {
+          window.location.href = `code-quiz.html?country=${matchedCountry.code}`;
+        }
+      });
+    </script>
+  </body>
+</html>
