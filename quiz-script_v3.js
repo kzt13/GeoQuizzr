@@ -46,8 +46,32 @@ function displayNextQuestion() {
 
   // Check if all questions have been answered
   if (questionCount === maxQuestions) {
-    alert(`You answered ${correctCount} out of ${maxQuestions} questions correctly.`);
-    resetScore();
+    const resultMessage = `You answered ${correctCount} out of ${maxQuestions} questions correctly.`;
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+  
+    const message = document.createElement('p');
+    message.textContent = resultMessage;
+    popup.appendChild(message);
+  
+    const playAgainButton = document.createElement('button');
+    playAgainButton.textContent = 'Play Again';
+    playAgainButton.addEventListener('click', () => {
+      popup.remove();
+      resetScore();
+      displayNextQuestion();
+    });
+    popup.appendChild(playAgainButton);
+  
+    const goToCountrySelectionButton = document.createElement('button');
+    goToCountrySelectionButton.textContent = 'Go to Country Selection';
+    goToCountrySelectionButton.addEventListener('click', () => {
+      popup.remove();
+      location.href = 'index.html';
+    });
+    popup.appendChild(goToCountrySelectionButton);
+  
+    document.body.appendChild(popup);
     return;
   }
 
