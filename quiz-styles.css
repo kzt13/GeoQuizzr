@@ -73,6 +73,7 @@ h1 {
 
 .quiz-image-container {
   flex-grow: 1;
+  margin-right: 20px; /* 画像と問題コンテナの間の距離を20pxに設定 */
 }
 
 .quiz-question-container {
