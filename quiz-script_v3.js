@@ -57,6 +57,8 @@ function displayNextQuestion() {
 
     playAgainButton.addEventListener('click', playAgain);
     returnToCountryButton.addEventListener('click', returnToCountry);
+    
+    return;
   }
 
   function playAgain() {
