@@ -143,4 +143,6 @@ function resetScore() {
   const totalQuestionsElement = document.getElementById('total-questions');
   currentScoreElement.innerHTML = correctCount;
   totalQuestionsElement.innerHTML = questionCount;
+  resultText.innerHTML = '';
 }
+
