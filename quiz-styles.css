@@ -126,7 +126,7 @@ h1 {
 
 /* バナー */
 .banner {
-background-color: #333;
+background-color: #fff;
 color: #fff;
 display: flex;
 justify-content: space-between;
