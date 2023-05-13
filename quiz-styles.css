@@ -127,7 +127,7 @@ h1 {
 /* バナー */
 .banner {
 background-color: #fff;
-color: #fff;
+color: #333;
 display: flex;
 justify-content: space-between;
 align-items: center;
