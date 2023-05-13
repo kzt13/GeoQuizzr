@@ -123,3 +123,30 @@ h1 {
 .popup-buttons button:hover {
   background-color: #3e8e41;
 }
+
+/* バナー */
+.banner {
+background-color: #333;
+color: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+}
+
+.region-list ul {
+display: flex;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.region-list li {
+margin-right: 20px;
+font-size: 18px;
+cursor: pointer;
+}
+
+.region-list li:hover {
+text-decoration: underline;
+}
