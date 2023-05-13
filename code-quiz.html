@@ -6,6 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="quiz-styles.css">
 </head>
 <body>
+	<div class="banner">
+		<a href="index.html"><img src="logo.png" alt="Logo"></a>
+		<div class="region-list">
+			<ul>
+				<li>Brazil</li>
+				<li>Czech Republic</li>
+				<li>Greece</li>
+				<li>France</li>
+				<li>Thailand</li>
+			</ul>
+		</div>
+	</div>
 	<div class="quiz-container">
 		<div class="quiz-image-container">
 			<img id="quiz-image" src="" alt="quiz-image">
@@ -15,7 +27,7 @@
 			<input type="text" id="answer-input" placeholder="Enter area code" maxlength="3" pattern="\d" required>
             		<button id="quiz-submit-button">Submit</button>
 			<div id="feedback-container"></div>
-			<p>Current score: <span id="current-score">0</span>/<span id="total-questions">0</span></p> <!-- 追加 -->
+			<p>Current score: <span id="current-score">0</span>/<span id="total-questions">0</span></p>
 		</div>
 	</div>
 	<div id="popup-container" class="popup-container">
@@ -24,16 +36,16 @@
     			<div class="popup-buttons">
 				<button id="play-again-button">Play Again</button>
 				<button id="return-to-country-button">Return to Country Selection</button>
-			</div>
+			 </div>
 		</div>
 	</div>
 
 	<script src="quiz-script_v3.js"></script>
 	<script>
-	// ページがロードされたときにテキストボックスにフォーカスを当てる
-	window.onload = function() {
-		document.getElementById("answer-input").focus();
-	};
+		// ページがロードされたときにテキストボックスにフォーカスを当てる
+		window.onload = function() {
+			document.getElementById("answer-input").focus();
+		};
 	</script>
 </body>
 </html>
