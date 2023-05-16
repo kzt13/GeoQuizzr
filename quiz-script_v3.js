@@ -121,6 +121,7 @@ function displayNextQuestion() {
   // Set question text
   const questionText = document.getElementById('quiz-question');
   if (questionText) {
+    console.log(typeof randomAnswer);
     if (areaCodesData && areaCodesData[randomAnswer]) {
       // 地名データが存在し、かつ該当の地名がある場合、地名を取得して問題文を作成
       const areaName = Object.values(areaCodesData[randomAnswer])[0];
