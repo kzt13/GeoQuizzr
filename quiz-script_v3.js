@@ -125,7 +125,7 @@ function displayNextQuestion() {
     } else {
       // 地名データが存在しない場合、または該当の地名がない場合、従来の問題文を使用
       console.log("地名データなし");
-      questionText.textContent = `What is the area code for...`;
+      questionText.textContent = "What is the area code for...";
     }
   }
 
