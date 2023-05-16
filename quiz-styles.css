@@ -16,10 +16,11 @@ h1 {
 
 /* .quiz-image -> #quiz-image に修正 */
 #quiz-image {
-  width: 900px;
+  width: 100%;
   height: auto;
-  max-width: 100%;
   visibility: hidden;
+  max-height: 400px; /* 画像の最大高さを指定 */
+  object-fit: contain; /* 画像を親要素に収まるように調整 */
 }
 
 #quiz-question {
