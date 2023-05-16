@@ -11,9 +11,15 @@ const popupContainer = document.getElementById('popup-container');
 const resultText = document.getElementById('result-text');
 const playAgainButton = document.getElementById('play-again-button');
 const returnToCountryButton = document.getElementById('return-to-country-button');
+let areaCodesData; // 追加: 地域コードと地名のデータを保持する変数
 
 fetch(`./json/${country}.json`) // load JSON file based on selected country
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('JSON file not found');
+    }
+    return response.json();
+  })
   .then(data => {
     imagePaths = data.map(item => {
       return {
@@ -22,11 +28,25 @@ fetch(`./json/${country}.json`) // load JSON file based on selected country
       };
     });
     maxQuestions = Math.min(maxQuestions, imagePaths.length);
+    return fetch(`./json/${country}_list.json`);
   })
-  .then(() => {
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Area codes data not found');
+    }
+  })
+  .then(data => {
+    areaCodesData = data;
     displayNextQuestion();
   })
-  .catch(error => console.error(error));
+  .catch(error => {
+    console.error(error);
+    // エラーハンドリングの処理を追加する（例: ファイルが存在しないメッセージの表示など）
+    // 従来の問題文を表示する処理を追加する
+    displayNextQuestion();
+  });
 
 function getCountryFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -94,6 +114,18 @@ function displayNextQuestion() {
     isImageLoaded = true;
     questionImage.style.visibility = 'visible';
   };
+
+  // Set question text
+  const questionText = document.getElementById('question-text');
+  if (areaCodesData) {
+    // 地名データが存在する場合、地名を取得して問題文を作成
+    const areaCode = Object.keys(areaCodesData[randomAnswer])[0];
+    const areaName = Object.values(areaCodesData[randomAnswer])[0];
+    questionText.textContent = `What is the area code for ${areaName} (${areaCode})?`;
+  } else {
+    // 地名データが存在しない場合、従来の問題文を使用
+    questionText.textContent = `What is the area code for...?`;
+  }
 
   // Reset feedback container and answer input
   const feedbackContainer = document.getElementById('feedback-container');
