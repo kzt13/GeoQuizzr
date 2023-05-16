@@ -122,9 +122,13 @@ function displayNextQuestion() {
   // Set question text
   const questionText = document.getElementById('quiz-question');
   if (questionText) {
+    console.log("areaCodesDataのキーの型:");
     console.log(typeof Object.keys(areaCodesData)[0]);
+    console.log("randomAnswer:");
+    console.log(randomAnswer);
     console.log(typeof randomAnswer);
-    console.log(areaCodesData[randomAnswer]);
+    console.log("areaCodesData[0][randomAnswer]:");
+    console.log(areaCodesData[0][randomAnswer]);
     if (areaCodesData && areaCodesData[randomAnswer]) {
       // 地名データが存在し、かつ該当の地名がある場合、地名を取得して問題文を作成
       const areaName = Object.values(areaCodesData[randomAnswer])[0];
