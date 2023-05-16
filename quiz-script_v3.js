@@ -124,7 +124,7 @@ function displayNextQuestion() {
   if (questionText) {
     console.log(typeof Object.keys(areaCodesData)[0]);
     console.log(typeof randomAnswer);
-    console.log(reaCodesData[randomAnswer]);
+    console.log(areaCodesData[randomAnswer]);
     if (areaCodesData && areaCodesData[randomAnswer]) {
       // 地名データが存在し、かつ該当の地名がある場合、地名を取得して問題文を作成
       const areaName = Object.values(areaCodesData[randomAnswer])[0];
