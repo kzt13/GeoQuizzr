@@ -19,21 +19,11 @@
 
     <script>
       const countryList = document.getElementById('country-list');
-      const countries = [
-        { code: 'br', name: 'Brazil' },
-        { code: 'cz', name: 'Czech Republic' },
-        { code: 'gr', name: 'Greece' },
-        { code: 'fr', name: 'France' },
-        { code: 'ru', name: 'Russia' },
-      ];
 
       countryList.addEventListener('click', (event) => {
         event.preventDefault();
         const selectedCountry = event.target.dataset.country;
-        const matchedCountry = countries.find(country => country.code === selectedCountry);
-        if (matchedCountry) {
-          window.location.href = `code-quiz.html?country=${matchedCountry.code}`;
-        }
+        window.location.href = `code-quiz.html?country=${selectedCountry}`;
       });
     </script>
   </body>
