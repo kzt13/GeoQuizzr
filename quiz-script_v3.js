@@ -119,8 +119,7 @@ function displayNextQuestion() {
   const questionText = document.getElementById('question-text');
   if (questionText) {
     if (areaCodesData && areaCodesData[randomAnswer]) {
-      // 地名データが存在し、かつ該当の地名がある場合、地名と地域コードを取得して問題文を作成
-      const areaCode = Object.keys(areaCodesData[randomAnswer])[0];
+      // 地名データが存在し、かつ該当の地名がある場合、地名を取得して問題文を作成
       const areaName = Object.values(areaCodesData[randomAnswer])[0];
       questionText.textContent = `What is the area code for ${areaName} (${areaCode})?`;
     } else {
