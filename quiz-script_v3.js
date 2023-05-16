@@ -121,7 +121,7 @@ function displayNextQuestion() {
     if (areaCodesData && areaCodesData[randomAnswer]) {
       // 地名データが存在し、かつ該当の地名がある場合、地名を取得して問題文を作成
       const areaName = Object.values(areaCodesData[randomAnswer])[0];
-      questionText.textContent = `What is the area code for ${areaName?`;
+      questionText.textContent = "What is the area code for ${areaName}?";
     } else {
       // 地名データが存在しない場合、または該当の地名がない場合、従来の問題文を使用
       console.log("地名データなし");
