@@ -117,14 +117,16 @@ function displayNextQuestion() {
 
   // Set question text
   const questionText = document.getElementById('question-text');
-  if (areaCodesData && areaCodesData[randomAnswer]) {
-    // 地名データが存在し、かつ該当の地名がある場合、地名と地域コードを取得して問題文を作成
-    const areaCode = Object.keys(areaCodesData[randomAnswer])[0];
-    const areaName = Object.values(areaCodesData[randomAnswer])[0];
-    questionText.textContent = `What is the area code for ${areaName}?`;
-  } else {
-    // 地名データが存在しない場合、従来の問題文を使用
-    questionText.textContent = `What is the area code for...?`;
+  if (questionText) {
+    if (areaCodesData && areaCodesData[randomAnswer]) {
+      // 地名データが存在し、かつ該当の地名がある場合、地名と地域コードを取得して問題文を作成
+      const areaCode = Object.keys(areaCodesData[randomAnswer])[0];
+      const areaName = Object.values(areaCodesData[randomAnswer])[0];
+      questionText.textContent = `What is the area code for ${areaName} (${areaCode})?`;
+    } else {
+      // 地名データが存在しない場合、または該当の地名がない場合、従来の問題文を使用
+      questionText.textContent = `What is the area code for...?`;
+    }
   }
 
   // Reset feedback container and answer input
