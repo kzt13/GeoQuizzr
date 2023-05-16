@@ -28,12 +28,13 @@ fetch(`./json/${country}.json`) // load JSON file based on selected country
       };
     });
     maxQuestions = Math.min(maxQuestions, imagePaths.length);
-    return fetch(`./json/${country}_list.json`);
+    return fetch("./json/${country}_list.json");
   })
   .then(response => {
     if (response.ok) {
       return response.json();
     } else {
+      console.log("./json/${country}_list.json" + " Not Found");
       throw new Error('Area codes data not found');
     }
   })
