@@ -32,13 +32,15 @@ fetch(`./json/${country}.json`) // load JSON file based on selected country
   })
   .then(response => {
     if (response.ok) {
+      console.log(`./json/${country}_list.json was Found`);
       return response.json();
     } else {
-      console.log(`./json/${country}_list.json" + " Not Found`);
+      console.log(`./json/${country}_list.json Not Found`);
       throw new Error('Area codes data not found');
     }
   })
   .then(data => {
+    console.log(data);
     areaCodesData = data;
     displayNextQuestion();
   })
