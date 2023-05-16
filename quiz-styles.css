@@ -16,7 +16,7 @@ h1 {
 
 /* .quiz-image -> #quiz-image に修正 */
 #quiz-image {
-  width: 500px;
+  width: 900px;
   height: auto;
   max-width: 100%;
   visibility: hidden;
