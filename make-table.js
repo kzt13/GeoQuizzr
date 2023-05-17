@@ -18,6 +18,7 @@ countries.forEach(country => {
 	const flagImg = document.createElement("img");
 	flagImg.src = `https://flagpedia.net/data/flags/h80/${country.code}.png`;
 	flagImg.alt = `${country.name} Flag`;
+	flagImg.classList.add("flag-img"); /* 追加 */
 	countryCell.appendChild(flagImg);
 	const countryName = document.createElement("span");
 	countryName.textContent = country.name;
