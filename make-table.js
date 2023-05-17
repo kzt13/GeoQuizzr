@@ -34,10 +34,11 @@ countries.forEach(country => {
 	row.appendChild(maxScoreCell);
 
 	const playButtonCell = document.createElement("td");
+	playButtonCell.classList.add("play-button"); // クラスを追加
 	const playButton = document.createElement("button");
 	playButton.textContent = "Play";
 	playButton.addEventListener("click", () => {
-	window.location.href = `code-quiz.html?country=${country.code}`;
+	  window.location.href = `code-quiz.html?country=${country.code}`;
 	});
 	playButtonCell.appendChild(playButton);
 	row.appendChild(playButtonCell);
