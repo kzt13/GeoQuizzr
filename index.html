@@ -8,69 +8,17 @@
   </head>
   <body>
     <h1>Area Code Quiz</h1>
-    <table>
+    <table id="country-table">
       <thead>
         <tr>
+          <th>Flag</th>
           <th>Country</th>
           <th>Average Score</th>
           <th>Max Score</th>
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>🇧🇷 Brazil</td>
-          <td>80%</td>
-          <td>100%</td>
-          <td><a href="code-quiz.html?country=br">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇨🇿 Czech Republic</td>
-          <td>75%</td>
-          <td>95%</td>
-          <td><a href="code-quiz.html?country=cz">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇬🇷 Greece</td>
-          <td>85%</td>
-          <td>98%</td>
-          <td><a href="code-quiz.html?country=gr">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇫🇷 France (3 digits)</td>
-          <td>70%</td>
-          <td>90%</td>
-          <td><a href="code-quiz.html?country=fr">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇹🇭 Thailand</td>
-          <td>88%</td>
-          <td>97%</td>
-          <td><a href="code-quiz.html?country=th">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇺🇦 Ukraine</td>
-          <td>82%</td>
-          <td>96%</td>
-          <td><a href="code-quiz.html?country=ua">Play</a></td>
-        </tr>
-        <tr>
-          <td>🇷🇺 Russia</td>
-          <td>78%</td>
-          <td>93%</td>
-          <td><a href="code-quiz.html?country=ru">Play</a></td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
-
-    <script>
-      const countryList = document.getElementById('country-list');
-
-      countryList.addEventListener('click', (event) => {
-        event.preventDefault();
-        const selectedCountry = event.target.dataset.country;
-        window.location.href = `code-quiz.html?country=${selectedCountry}`;
-      });
-    </script>
   </body>
 </html>
