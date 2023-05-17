@@ -59,3 +59,21 @@ a:hover {
 .play-button {
   text-align: center; /* Playボタンを中央揃え */
 }
+
+.play-button button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f8f8f8;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.play-button button:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+
