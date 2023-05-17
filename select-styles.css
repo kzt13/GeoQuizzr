@@ -57,7 +57,8 @@ a:hover {
 }
 
 .play-button {
-  text-align: center; /* Playボタンを中央揃え */
+  display: flex;
+  justify-content: center;
 }
 
 .play-button button {
