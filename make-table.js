@@ -1,12 +1,11 @@
-// サンプルデータ
 const countries = [
-  { code: "br", name: "Brazil", averageScore: 80, maxScore: 100 },
-  { code: "cz", name: "Czechia", averageScore: 70, maxScore: 95 },
-  { code: "gr", name: "Greece", averageScore: 75, maxScore: 90 },
-  { code: "fr", name: "France (3 digits)", averageScore: 85, maxScore: 98 },
-  { code: "th", name: "Thailand", averageScore: 65, maxScore: 88 },
-  { code: "ua", name: "Ukraine", averageScore: 78, maxScore: 94 },
-  { code: "ru", name: "Russia", averageScore: 72, maxScore: 89 }
+  { code: "br", name: "Brazil", averageScore: "-", maxScore: "-" },
+  { code: "cz", name: "Czechia", averageScore: "-", maxScore: "-" },
+  { code: "gr", name: "Greece", averageScore: "-", maxScore: "-" },
+  { code: "fr", name: "France (3 digits)", averageScore: "-", maxScore: "-" },
+  { code: "th", name: "Thailand", averageScore: "-", maxScore: "-" },
+  { code: "ua", name: "Ukraine", averageScore: "-", maxScore: "-" },
+  { code: "ru", name: "Russia", averageScore: "-", maxScore: "-" }
 ];
 
 const tableBody = document.querySelector("#country-table tbody");
