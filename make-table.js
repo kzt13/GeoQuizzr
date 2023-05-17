@@ -21,6 +21,7 @@ countries.forEach(country => {
 	countryCell.appendChild(flagImg);
 	const countryName = document.createElement("span");
 	countryName.textContent = country.name;
+  	countryName.classList.add("country-name"); /* 追加 */
 	countryCell.appendChild(countryName);
 	row.appendChild(countryCell);
 
