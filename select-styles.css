@@ -8,15 +8,23 @@ h1 {
   text-align: center;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
   text-align: center;
 }
 
-li {
-  margin-bottom: 10px;
+th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f8f8;
 }
 
 a {
