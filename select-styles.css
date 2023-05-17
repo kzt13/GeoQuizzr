@@ -52,5 +52,9 @@ a:hover {
 
 .country-name {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: middle; /* 国名を縦方向に中央揃え */
+}
+
+.play-button {
+  text-align: center; /* Playボタンを中央揃え */
 }
