@@ -14,18 +14,14 @@ const tableBody = document.querySelector("#country-table tbody");
 countries.forEach(country => {
 	const row = document.createElement("tr");
 
-	const flagCell = document.createElement("td");
+	const countryCell = document.createElement("td");
 	const flagImg = document.createElement("img");
 	flagImg.src = `https://flagpedia.net/data/flags/h80/${country.code}.png`;
 	flagImg.alt = `${country.name} Flag`;
-	flagCell.appendChild(flagImg);
-	row.appendChild(flagCell);
-
-	const countryCell = document.createElement("td");
-	const countryLink = document.createElement("a");
-	countryLink.href = `code-quiz.html?country=${country.code}`;
-	countryLink.textContent = country.name;
-	countryCell.appendChild(countryLink);
+	countryCell.appendChild(flagImg);
+	const countryName = document.createElement("span");
+	countryName.textContent = country.name;
+	countryCell.appendChild(countryName);
 	row.appendChild(countryCell);
 
 	const averageScoreCell = document.createElement("td");
@@ -39,9 +35,11 @@ countries.forEach(country => {
 	const playButtonCell = document.createElement("td");
 	const playButton = document.createElement("button");
 	playButton.textContent = "Play";
+	playButton.addEventListener("click", () => {
+	window.location.href = `code-quiz.html?country=${country.code}`;
+	});
 	playButtonCell.appendChild(playButton);
 	row.appendChild(playButtonCell);
 
 	tableBody.appendChild(row);
 });
-
