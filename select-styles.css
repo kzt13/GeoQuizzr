@@ -42,3 +42,9 @@ a:hover {
   border-bottom: none;
   background-color: #eee;
 }
+
+.flag-img {
+  width: 30px; /* サイズを適宜調整してください */
+  height: auto;
+  margin-right: 10px; /* 画像と国名の間のスペースを適宜調整してください */
+}
