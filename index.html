@@ -4,19 +4,64 @@
     <meta charset="UTF-8">
     <title>Country Select Page</title>
     <link rel="stylesheet" type="text/css" href="select-styles.css">
-    <link rel="shortcut icon" href=/GeoQuizzr/favicon.ico type="image/x-icon">
+    <link rel="shortcut icon" href="/GeoQuizzr/favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <h1>Select a country</h1>
-    <ul id="country-list">
-      <li><a href="#" data-country="br">Brazil</a></li>
-      <li><a href="#" data-country="cz">Czech Republic</a></li>
-      <li><a href="#" data-country="gr">Greece</a></li>
-      <li><a href="#" data-country="fr">France (3 digits)</a></li>
-      <li><a href="#" data-country="th">Thailand</a></li>
-      <li><a href="#" data-country="ua">Ukraine</a></li>
-      <li><a href="#" data-country="ru">Russia</a></li>
-    </ul>
+    <h1>Area Code Quiz</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Average Score</th>
+          <th>Max Score</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇧🇷 Brazil</td>
+          <td>80%</td>
+          <td>100%</td>
+          <td><a href="code-quiz.html?country=br">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇨🇿 Czech Republic</td>
+          <td>75%</td>
+          <td>95%</td>
+          <td><a href="code-quiz.html?country=cz">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇬🇷 Greece</td>
+          <td>85%</td>
+          <td>98%</td>
+          <td><a href="code-quiz.html?country=gr">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇫🇷 France (3 digits)</td>
+          <td>70%</td>
+          <td>90%</td>
+          <td><a href="code-quiz.html?country=fr">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇹🇭 Thailand</td>
+          <td>88%</td>
+          <td>97%</td>
+          <td><a href="code-quiz.html?country=th">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇺🇦 Ukraine</td>
+          <td>82%</td>
+          <td>96%</td>
+          <td><a href="code-quiz.html?country=ua">Play</a></td>
+        </tr>
+        <tr>
+          <td>🇷🇺 Russia</td>
+          <td>78%</td>
+          <td>93%</td>
+          <td><a href="code-quiz.html?country=ru">Play</a></td>
+        </tr>
+      </tbody>
+    </table>
 
     <script>
       const countryList = document.getElementById('country-list');
