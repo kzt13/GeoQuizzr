@@ -78,3 +78,13 @@ a:hover {
 .play-button button:hover {
   background-color: #e53935;
 }
+
+/* バナー */
+.banner {
+background-color: #fff;
+color: #333;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+}
