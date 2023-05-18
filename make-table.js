@@ -5,7 +5,8 @@ const countries = [
   { code: "fr", name: "France (3 digits)", averageScore: "-", maxScore: "-" },
   { code: "th", name: "Thailand", averageScore: "-", maxScore: "-" },
   { code: "ua", name: "Ukraine", averageScore: "-", maxScore: "-" },
-  { code: "ru", name: "Russia", averageScore: "-", maxScore: "-" }
+  { code: "ru", name: "Russia", averageScore: "-", maxScore: "-" },
+  { code: "kr", name: "South Korea", averageScore: "-", maxScore: "-" },
 ];
 
 const tableBody = document.querySelector("#country-table tbody");
