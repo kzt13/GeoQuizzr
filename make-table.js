@@ -14,6 +14,7 @@ const countries = [
   { code: "ie", name: "Ireland", averageScore: "-", maxScore: "-" },
   { code: "pl", name: "Poland", averageScore: "-", maxScore: "-" },
   { code: "it", name: "Italy", averageScore: "-", maxScore: "-" },
+  { code: "ca", name: "Canada", averageScore: "-", maxScore: "-" },
 ];
 
 const tableBody = document.querySelector("#country-table tbody");
